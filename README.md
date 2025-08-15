@@ -1,0 +1,5 @@
+import 'package:flutter/material.dart';
+void main(){runApp(AdminApp());}
+class AdminApp extends StatelessWidget{@override Widget build(BuildContext context){return MaterialApp(title:'Hadaya - Admin',debugShowCheckedModeBanner:false,theme:ThemeData(primarySwatch:Colors.blueGrey,fontFamily:'Cairo'),home:AdminHome());}}
+class AdminHome extends StatelessWidget{final List<Map<String,dynamic>> orders=[{'id':1,'name':'محمد علي','product':'تابلو 30x40','status':'جديد'},{'id':2,'name':'أحمد حسن','product':'براويز 30x40','status':'تم الشحن'}];@override Widget build(BuildContext context){return Scaffold(appBar:AppBar(title:Text('لوحة إدارة الطلبات')),body:ListView.builder(padding:EdgeInsets.all(10),itemCount:orders.length,itemBuilder:(context,index){return OrderCard(order:orders[index]);}));}}
+class OrderCard extends StatelessWidget{final Map<String,dynamic> order;OrderCard({required this.order});@override Widget build(BuildContext context){return Card(margin:EdgeInsets.symmetric(vertical:8),child:ListTile(title:Text('${order['name']} - ${order['product']}'),subtitle:Text('الحالة: ${order['status']}'),trailing:IconButton(icon:Icon(Icons.edit),onPressed:(){})));}}
